@@ -15,19 +15,7 @@ class CityTableViewController: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    // Uncomment the following line to preserve selection between presentations
-    // self.clearsSelectionOnViewWillAppear = false
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem
     cities = interactor.getCities()!
-  }
-  
-  private func loadSamples() {
-    let city1 = DomainCity(name: "London", favorite: nil)
-    let city2 = DomainCity(name: "Budapest", favorite: nil)
-    cities += ([city1, city2])
   }
   
   // MARK: - Table view data source
@@ -71,16 +59,15 @@ class CityTableViewController: UITableViewController {
     }
   }
  
-  
-  /*
    // MARK: - Navigation
    
    // In a storyboard-based application, you will often want to do a little preparation before navigation
    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
    // Get the new view controller using segue.destinationViewController.
    // Pass the selected object to the new view controller.
+    let targetVC = segue.destination as! WeatherViewController
+    targetVC.city = cities[(tableView.indexPathForSelectedRow?.row)!]
    }
-   */
   
   private func addCity(name: String) {
     let city = DomainCity(name: name, favorite: false)
@@ -89,6 +76,8 @@ class CityTableViewController: UITableViewController {
     tableView.insertRows(at: [path], with: UITableViewRowAnimation.automatic)
     interactor.saveCity(city: city)
   }
+  
+  //MARK: - IBAction
   
   @IBAction func addCityButtonTap(_ sender: Any) {
     let createCityAlert = UIAlertController(title: "Add new city", message: "Enter the city name", preferredStyle: .alert)

@@ -26,6 +26,7 @@
 		4ACEB5101FBFA9EB003048E1 /* DomainCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACEB50F1FBFA9EB003048E1 /* DomainCity.swift */; };
 		4ACEB5121FBFAF82003048E1 /* FavouriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACEB5111FBFAF82003048E1 /* FavouriteButton.swift */; };
 		4ACEB5151FBFBDBA003048E1 /* DiskCityDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACEB5141FBFBDBA003048E1 /* DiskCityDataStore.swift */; };
+		4AF5C3AB1FC05DEB000C4AD2 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF5C3AA1FC05DEB000C4AD2 /* WeatherViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		4ACEB50F1FBFA9EB003048E1 /* DomainCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainCity.swift; sourceTree = "<group>"; };
 		4ACEB5111FBFAF82003048E1 /* FavouriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteButton.swift; sourceTree = "<group>"; };
 		4ACEB5141FBFBDBA003048E1 /* DiskCityDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskCityDataStore.swift; sourceTree = "<group>"; };
+		4AF5C3AA1FC05DEB000C4AD2 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 		4ACEB5031FBF996C003048E1 /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				4AF5C3A91FC05ACA000C4AD2 /* weather */,
 				4ACEB5091FBF9FFF003048E1 /* customcontrol */,
 				4ACEB5041FBF9976003048E1 /* citylist */,
 			);
@@ -200,6 +203,14 @@
 				4A0167461FBFC75F001E8699 /* CoreDataCityDataStore.swift */,
 			);
 			path = city;
+			sourceTree = "<group>";
+		};
+		4AF5C3A91FC05ACA000C4AD2 /* weather */ = {
+			isa = PBXGroup;
+			children = (
+				4AF5C3AA1FC05DEB000C4AD2 /* WeatherViewController.swift */,
+			);
+			path = weather;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4ACEB5081FBF9B5C003048E1 /* CityTableViewCell.swift in Sources */,
+				4AF5C3AB1FC05DEB000C4AD2 /* WeatherViewController.swift in Sources */,
 				4ACEB5021FBF971F003048E1 /* CoreDataStack.swift in Sources */,
 				4ACEB4FA1FBF955F003048E1 /* City+CoreDataClass.swift in Sources */,
 				4ACEB5061FBF99FD003048E1 /* CityTableViewController.swift in Sources */,

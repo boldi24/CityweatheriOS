@@ -79,10 +79,10 @@
             </objects>
             <point key="canvasLocation" x="152.80000000000001" y="-132.68365817091455"/>
         </scene>
-        <!--View Controller-->
+        <!--Weather View Controller-->
         <scene sceneID="fbC-Bb-yUB">
             <objects>
-                <viewController id="PGb-ZS-NRh" sceneMemberID="viewController">
+                <viewController id="PGb-ZS-NRh" customClass="WeatherViewController" customModule="CityWeather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eG0-XM-IxM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
