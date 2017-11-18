@@ -10,6 +10,8 @@ import UIKit
 
 class CityTableViewCell: UITableViewCell {
   
+  var selectionDelegate: SelectionCallback!
+  
   @IBOutlet weak var cityLabel: UILabel!
   @IBOutlet weak var favButton: FavouriteButton!
   
@@ -22,6 +24,10 @@ class CityTableViewCell: UITableViewCell {
     super.setSelected(selected, animated: animated)
     
     // Configure the view for the selected state
+  }
+  @IBAction func onFavoriteButtonTouchUpInside(_ sender: Any) {
+    print("selected")
+    selectionDelegate.onFavoriteButtonTouchUpInside(of: self)
   }
   
 }

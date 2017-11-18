@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13526"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -41,6 +42,9 @@
                                             <state key="normal" backgroundImage="emptyStar">
                                                 <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </state>
+                                            <connections>
+                                                <action selector="onFavoriteButtonTouchUpInside:" destination="fU9-JE-NLV" eventType="touchUpInside" id="alu-HL-X6U"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -54,6 +58,7 @@
                                 <connections>
                                     <outlet property="cityLabel" destination="GJv-fO-m2A" id="uXA-im-EDf"/>
                                     <outlet property="favButton" destination="5Cv-vO-clS" id="OZd-4X-rJc"/>
+                                    <segue destination="PGb-ZS-NRh" kind="show" id="CGE-Qw-NP5"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -73,6 +78,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mI6-1M-bBT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="152.80000000000001" y="-132.68365817091455"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="fbC-Bb-yUB">
+            <objects>
+                <viewController id="PGb-ZS-NRh" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eG0-XM-IxM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="NVJ-XZ-KHr"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MbL-B3-Fz1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="883" y="-133"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vng-ib-sqb">

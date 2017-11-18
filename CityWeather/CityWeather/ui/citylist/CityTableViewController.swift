@@ -46,8 +46,9 @@ class CityTableViewController: UITableViewController {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? CityTableViewCell  else {
       fatalError("The dequeued cell is not an instance of CityTableViewCell.")
     }
+    cell.selectionDelegate = self
     cell.cityLabel.text = cities[indexPath.row].name
-    
+    cell.favButton.isSelected = cities[indexPath.row].favorite!
     
     return cell
   }
@@ -132,4 +133,18 @@ class CityTableViewController: UITableViewController {
     present(createCityAlert, animated: true, completion: nil)
   }
   
+}
+
+extension CityTableViewController: SelectionCallback {
+  func onFavoriteButtonTouchUpInside(of cell: UITableViewCell) {
+    print("bement")
+    let indexPath = tableView.indexPath(for: cell)
+    if let indexPathUnwrapped = indexPath {
+      print("Updating city at \(indexPathUnwrapped.row)")
+      let city = cities[indexPathUnwrapped.row]
+      city.favorite = !city.favorite!
+      interactor.updateCity(city: city, at: indexPathUnwrapped)
+    }
+
+  }
 }

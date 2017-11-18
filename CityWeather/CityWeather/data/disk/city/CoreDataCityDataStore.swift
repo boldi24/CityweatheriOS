@@ -16,7 +16,7 @@ class CoreDataCityDataStore: NSObject, DiskCityDataStore {
   private override init() {
     super.init()
     let fetchRequest: NSFetchRequest<City> = City.fetchRequest()
-    let sortDescriptor = NSSortDescriptor(key: #keyPath(City.name), ascending: false)
+    let sortDescriptor = NSSortDescriptor(key: #keyPath(City.isFavourite), ascending: false)
     fetchRequest.sortDescriptors = [sortDescriptor]
     fetchRequest.fetchBatchSize = 30
     fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
@@ -40,7 +40,6 @@ class CoreDataCityDataStore: NSObject, DiskCityDataStore {
     let newCity = City(context: managedObjectContext)
     newCity.name = city.name
     newCity.isFavourite = city.favorite!
-    CoreDataStack.shared.saveContext()
   }
   
   func updateCity(city: DomainCity, at indexPath: IndexPath) {
