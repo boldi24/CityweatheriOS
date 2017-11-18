@@ -17,6 +17,10 @@
 		4ACEB4FA1FBF955F003048E1 /* City+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACEB4F61FBF955F003048E1 /* City+CoreDataClass.swift */; };
 		4ACEB4FB1FBF955F003048E1 /* City+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACEB4F71FBF955F003048E1 /* City+CoreDataProperties.swift */; };
 		4ACEB5021FBF971F003048E1 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACEB5011FBF971F003048E1 /* CoreDataStack.swift */; };
+		4ACEB5061FBF99FD003048E1 /* CityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACEB5051FBF99FD003048E1 /* CityTableViewController.swift */; };
+		4ACEB5081FBF9B5C003048E1 /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACEB5071FBF9B5C003048E1 /* CityTableViewCell.swift */; };
+		4ACEB5101FBFA9EB003048E1 /* DomainCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACEB50F1FBFA9EB003048E1 /* DomainCity.swift */; };
+		4ACEB5121FBFAF82003048E1 /* FavouriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACEB5111FBFAF82003048E1 /* FavouriteButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +36,10 @@
 		4ACEB4F61FBF955F003048E1 /* City+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "City+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4ACEB4F71FBF955F003048E1 /* City+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "City+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4ACEB5011FBF971F003048E1 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		4ACEB5051FBF99FD003048E1 /* CityTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableViewController.swift; sourceTree = "<group>"; };
+		4ACEB5071FBF9B5C003048E1 /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
+		4ACEB50F1FBFA9EB003048E1 /* DomainCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainCity.swift; sourceTree = "<group>"; };
+		4ACEB5111FBFAF82003048E1 /* FavouriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +72,7 @@
 		4ACEB4D41FBF8E8D003048E1 /* CityWeather */ = {
 			isa = PBXGroup;
 			children = (
+				4ACEB5031FBF996C003048E1 /* ui */,
 				4ACEB4FE1FBF9692003048E1 /* data */,
 				4ACEB4FC1FBF9562003048E1 /* domain */,
 				4ACEB4D51FBF8E8D003048E1 /* AppDelegate.swift */,
@@ -79,7 +88,7 @@
 		4ACEB4FC1FBF9562003048E1 /* domain */ = {
 			isa = PBXGroup;
 			children = (
-				4ACEB4FD1FBF9566003048E1 /* entity */,
+				4ACEB50C1FBFA9BE003048E1 /* entity */,
 			);
 			path = domain;
 			sourceTree = "<group>";
@@ -98,6 +107,7 @@
 		4ACEB4FE1FBF9692003048E1 /* data */ = {
 			isa = PBXGroup;
 			children = (
+				4ACEB4FD1FBF9566003048E1 /* entity */,
 				4ACEB5001FBF96A5003048E1 /* disk */,
 				4ACEB4FF1FBF969C003048E1 /* api */,
 			);
@@ -117,6 +127,40 @@
 				4ACEB5011FBF971F003048E1 /* CoreDataStack.swift */,
 			);
 			path = disk;
+			sourceTree = "<group>";
+		};
+		4ACEB5031FBF996C003048E1 /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				4ACEB5091FBF9FFF003048E1 /* customcontrol */,
+				4ACEB5041FBF9976003048E1 /* citylist */,
+			);
+			path = ui;
+			sourceTree = "<group>";
+		};
+		4ACEB5041FBF9976003048E1 /* citylist */ = {
+			isa = PBXGroup;
+			children = (
+				4ACEB5051FBF99FD003048E1 /* CityTableViewController.swift */,
+				4ACEB5071FBF9B5C003048E1 /* CityTableViewCell.swift */,
+			);
+			path = citylist;
+			sourceTree = "<group>";
+		};
+		4ACEB5091FBF9FFF003048E1 /* customcontrol */ = {
+			isa = PBXGroup;
+			children = (
+				4ACEB5111FBFAF82003048E1 /* FavouriteButton.swift */,
+			);
+			path = customcontrol;
+			sourceTree = "<group>";
+		};
+		4ACEB50C1FBFA9BE003048E1 /* entity */ = {
+			isa = PBXGroup;
+			children = (
+				4ACEB50F1FBFA9EB003048E1 /* DomainCity.swift */,
+			);
+			path = entity;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -191,12 +235,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4ACEB5081FBF9B5C003048E1 /* CityTableViewCell.swift in Sources */,
 				4ACEB5021FBF971F003048E1 /* CoreDataStack.swift in Sources */,
 				4ACEB4FA1FBF955F003048E1 /* City+CoreDataClass.swift in Sources */,
+				4ACEB5061FBF99FD003048E1 /* CityTableViewController.swift in Sources */,
 				4ACEB4F81FBF955F003048E1 /* WeatherData+CoreDataClass.swift in Sources */,
 				4ACEB4FB1FBF955F003048E1 /* City+CoreDataProperties.swift in Sources */,
 				4ACEB4DE1FBF8E8D003048E1 /* CityWeather.xcdatamodeld in Sources */,
+				4ACEB5121FBFAF82003048E1 /* FavouriteButton.swift in Sources */,
 				4ACEB4D61FBF8E8D003048E1 /* AppDelegate.swift in Sources */,
+				4ACEB5101FBFA9EB003048E1 /* DomainCity.swift in Sources */,
 				4ACEB4F91FBF955F003048E1 /* WeatherData+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -6,25 +6,54 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13526"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--City Table View Controller-->
         <scene sceneID="Fe7-Ri-87W">
             <objects>
-                <tableViewController id="XXn-yb-nfQ" sceneMemberID="viewController">
+                <tableViewController id="XXn-yb-nfQ" customClass="CityTableViewController" customModule="CityWeather" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="55z-GQ-Hcy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="fU9-JE-NLV">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CityTableViewCell" rowHeight="100" id="fU9-JE-NLV" customClass="CityTableViewCell" customModule="CityWeather" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fU9-JE-NLV" id="kne-cB-BGP">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GJv-fO-m2A">
+                                            <rect key="frame" x="32" y="26" width="70.5" height="48"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Cv-vO-clS" customClass="FavouriteButton" customModule="CityWeather" customModuleProvider="target">
+                                            <rect key="frame" x="279" y="9.5" width="80" height="80.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="80" id="a4p-b4-Fvw"/>
+                                                <constraint firstAttribute="height" constant="80" id="qNV-fP-D1r"/>
+                                            </constraints>
+                                            <state key="normal" backgroundImage="emptyStar">
+                                                <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="GJv-fO-m2A" firstAttribute="leading" secondItem="kne-cB-BGP" secondAttribute="leadingMargin" constant="16" id="FvV-kr-mdJ"/>
+                                        <constraint firstItem="GJv-fO-m2A" firstAttribute="centerY" secondItem="kne-cB-BGP" secondAttribute="centerY" id="HA0-g7-coG"/>
+                                        <constraint firstAttribute="trailing" secondItem="5Cv-vO-clS" secondAttribute="trailing" constant="16" id="M2m-Ni-LxD"/>
+                                        <constraint firstItem="5Cv-vO-clS" firstAttribute="centerY" secondItem="kne-cB-BGP" secondAttribute="centerY" id="mL4-tu-m14"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="cityLabel" destination="GJv-fO-m2A" id="uXA-im-EDf"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -57,4 +86,7 @@
             <point key="canvasLocation" x="-631" y="-133"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="emptyStar" width="170" height="170"/>
+    </resources>
 </document>
