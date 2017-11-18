@@ -7,11 +7,11 @@
 //
 
 class DomainCity {
-    var name: String?
-    var favorite: Bool?
-    
-    init(name: String, favorite: Bool?) {
-        self.name = name
-        self.favorite = favorite
-    }
+  var name: String?
+  var favorite: Bool?
+  
+  init(name: String, favorite: Bool?) {
+    self.name = name
+    self.favorite = favorite
+  }
 }

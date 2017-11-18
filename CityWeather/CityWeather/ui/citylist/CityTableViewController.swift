@@ -9,129 +9,127 @@
 import UIKit
 
 class CityTableViewController: UITableViewController {
+  
+  private var cities = [DomainCity]()
+  private let interactor = CityInteractorImpl()
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
     
-    private var cities = [DomainCity]()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        loadSamples()
-    }
+    // Uncomment the following line to preserve selection between presentations
+    // self.clearsSelectionOnViewWillAppear = false
     
-    private func loadSamples() {
-        let city1 = DomainCity(name: "London", favorite: nil)
-        let city2 = DomainCity(name: "Budapest", favorite: nil)
-        cities += ([city1, city2])
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    cities = interactor.getCities()!
+  }
+  
+  private func loadSamples() {
+    let city1 = DomainCity(name: "London", favorite: nil)
+    let city2 = DomainCity(name: "Budapest", favorite: nil)
+    cities += ([city1, city2])
+  }
+  
+  // MARK: - Table view data source
+  
+  override func numberOfSections(in tableView: UITableView) -> Int {
+    return 1
+  }
+  
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return cities.count
+  }
+  
+  
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cellIdentifier = "CityTableViewCell"
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? CityTableViewCell  else {
+      fatalError("The dequeued cell is not an instance of CityTableViewCell.")
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cities.count
-    }
-
+    cell.cityLabel.text = cities[indexPath.row].name
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "CityTableViewCell"
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? CityTableViewCell  else {
-            fatalError("The dequeued cell is not an instance of CityTableViewCell.")
-        }
-        cell.cityLabel.text = cities[indexPath.row].name
-        
-
-        return cell
-    }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
-    }
+    return cell
+  }
+  
+  override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 100
+  }
+  
+  
+  /*
+   // Override to support conditional editing of the table view.
+   override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+   // Return false if you do not want the specified item to be editable.
+   return true
+   }
+   */
+  
+  /*
+   // Override to support editing the table view.
+   override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+   if editingStyle == .delete {
+   // Delete the row from the data source
+   tableView.deleteRows(at: [indexPath], with: .fade)
+   } else if editingStyle == .insert {
+   // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+   }
+   }
+   */
+  
+  /*
+   // Override to support rearranging the table view.
+   override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+   
+   }
+   */
+  
+  /*
+   // Override to support conditional rearranging of the table view.
+   override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+   // Return false if you do not want the item to be re-orderable.
+   return true
+   }
+   */
+  
+  /*
+   // MARK: - Navigation
+   
+   // In a storyboard-based application, you will often want to do a little preparation before navigation
+   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+   // Get the new view controller using segue.destinationViewController.
+   // Pass the selected object to the new view controller.
+   }
+   */
+  
+  private func addCity(name: String) {
+    let city = DomainCity(name: name, favorite: false)
+    cities.append(city)
+    let path = IndexPath(row: cities.count-1, section: 0)
+    tableView.insertRows(at: [path], with: UITableViewRowAnimation.automatic)
+    interactor.saveCity(city: city)
+  }
+  
+  @IBAction func addCityButtonTap(_ sender: Any) {
+    let createCityAlert = UIAlertController(title: "Add new city", message: "Enter the city name", preferredStyle: .alert)
     
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    private func addCity(name: String) {
-        cities.append(DomainCity(name: name, favorite: nil))
-        let path = IndexPath(row: cities.count-1, section: 0)
-        tableView.insertRows(at: [path], with: UITableViewRowAnimation.automatic)
-    }
-    
-    @IBAction func addCityButtonTap(_ sender: Any) {
-        let createCityAlert = UIAlertController(title: "Add new city", message: "Enter the city name", preferredStyle: .alert)
-        
-        createCityAlert.addTextField() {
-            textField in
-            textField.placeholder = "Your new city"
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        createCityAlert.addAction(cancelAction)
-        
-        let createAction = UIAlertAction(title: "Create", style: .default) {
-            action in
-            
-            let textField = createCityAlert.textFields!.first!
-            self.addCity(name: textField.text!)
-        }
-        createCityAlert.addAction(createAction)
-        
-        present(createCityAlert, animated: true, completion: nil)
+    createCityAlert.addTextField() {
+      textField in
+      textField.placeholder = "Your new city"
     }
     
+    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+    createCityAlert.addAction(cancelAction)
+    
+    let createAction = UIAlertAction(title: "Create", style: .default) {
+      action in
+      
+      let textField = createCityAlert.textFields!.first!
+      self.addCity(name: textField.text!)
+    }
+    createCityAlert.addAction(createAction)
+    
+    present(createCityAlert, animated: true, completion: nil)
+  }
+  
 }
