@@ -105,5 +105,33 @@ class CityTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    private func addCity(name: String) {
+        cities.append(DomainCity(name: name, favorite: nil))
+        let path = IndexPath(row: cities.count-1, section: 0)
+        tableView.insertRows(at: [path], with: UITableViewRowAnimation.automatic)
+    }
+    
+    @IBAction func addCityButtonTap(_ sender: Any) {
+        let createCityAlert = UIAlertController(title: "Add new city", message: "Enter the city name", preferredStyle: .alert)
+        
+        createCityAlert.addTextField() {
+            textField in
+            textField.placeholder = "Your new city"
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        createCityAlert.addAction(cancelAction)
+        
+        let createAction = UIAlertAction(title: "Create", style: .default) {
+            action in
+            
+            let textField = createCityAlert.textFields!.first!
+            self.addCity(name: textField.text!)
+        }
+        createCityAlert.addAction(createAction)
+        
+        present(createCityAlert, animated: true, completion: nil)
+    }
+    
 }

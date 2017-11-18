@@ -53,6 +53,7 @@
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="cityLabel" destination="GJv-fO-m2A" id="uXA-im-EDf"/>
+                                    <outlet property="favButton" destination="5Cv-vO-clS" id="OZd-4X-rJc"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -61,7 +62,13 @@
                             <outlet property="delegate" destination="XXn-yb-nfQ" id="p5G-vV-xd5"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="VOD-ub-AvJ"/>
+                    <navigationItem key="navigationItem" id="VOD-ub-AvJ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="C2M-H2-Rgp">
+                            <connections>
+                                <action selector="addCityButtonTap:" destination="XXn-yb-nfQ" id="R5A-Ox-zyY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mI6-1M-bBT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
