@@ -12,6 +12,9 @@
 		4A01674B1FBFD08A001E8699 /* CityInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A01674A1FBFD08A001E8699 /* CityInteractor.swift */; };
 		4A01674D1FBFD1DE001E8699 /* CityInteractorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A01674C1FBFD1DE001E8699 /* CityInteractorImpl.swift */; };
 		4A01674F1FBFDACA001E8699 /* SelectionCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A01674E1FBFDACA001E8699 /* SelectionCallback.swift */; };
+		4A1710711FDC60C30012A7D4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1710701FDC60C30012A7D4 /* Constants.swift */; };
+		4A1710731FDC62940012A7D4 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1710721FDC62940012A7D4 /* NetworkManager.swift */; };
+		4A1710751FDC62D80012A7D4 /* WeatherRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1710741FDC62D80012A7D4 /* WeatherRepository.swift */; };
 		4ACEB4D61FBF8E8D003048E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACEB4D51FBF8E8D003048E1 /* AppDelegate.swift */; };
 		4ACEB4DB1FBF8E8D003048E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4ACEB4D91FBF8E8D003048E1 /* Main.storyboard */; };
 		4ACEB4DE1FBF8E8D003048E1 /* CityWeather.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4ACEB4DC1FBF8E8D003048E1 /* CityWeather.xcdatamodeld */; };
@@ -35,6 +38,9 @@
 		4A01674A1FBFD08A001E8699 /* CityInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityInteractor.swift; sourceTree = "<group>"; };
 		4A01674C1FBFD1DE001E8699 /* CityInteractorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityInteractorImpl.swift; sourceTree = "<group>"; };
 		4A01674E1FBFDACA001E8699 /* SelectionCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionCallback.swift; sourceTree = "<group>"; };
+		4A1710701FDC60C30012A7D4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		4A1710721FDC62940012A7D4 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		4A1710741FDC62D80012A7D4 /* WeatherRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRepository.swift; sourceTree = "<group>"; };
 		4ACEB4D21FBF8E8D003048E1 /* CityWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CityWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ACEB4D51FBF8E8D003048E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4ACEB4DA1FBF8E8D003048E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -154,6 +160,9 @@
 		4ACEB4FF1FBF969C003048E1 /* api */ = {
 			isa = PBXGroup;
 			children = (
+				4A1710701FDC60C30012A7D4 /* Constants.swift */,
+				4A1710721FDC62940012A7D4 /* NetworkManager.swift */,
+				4A1710741FDC62D80012A7D4 /* WeatherRepository.swift */,
 			);
 			path = api;
 			sourceTree = "<group>";
@@ -366,7 +375,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A1710731FDC62940012A7D4 /* NetworkManager.swift in Sources */,
 				4ACEB5081FBF9B5C003048E1 /* CityTableViewCell.swift in Sources */,
+				4A1710751FDC62D80012A7D4 /* WeatherRepository.swift in Sources */,
 				4AF5C3AB1FC05DEB000C4AD2 /* WeatherViewController.swift in Sources */,
 				4ACEB5021FBF971F003048E1 /* CoreDataStack.swift in Sources */,
 				4ACEB4FA1FBF955F003048E1 /* City+CoreDataClass.swift in Sources */,
@@ -383,6 +394,7 @@
 				4A01674D1FBFD1DE001E8699 /* CityInteractorImpl.swift in Sources */,
 				4ACEB5101FBFA9EB003048E1 /* DomainCity.swift in Sources */,
 				4ACEB4F91FBF955F003048E1 /* WeatherData+CoreDataProperties.swift in Sources */,
+				4A1710711FDC60C30012A7D4 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

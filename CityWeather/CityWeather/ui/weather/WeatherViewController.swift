@@ -8,7 +8,15 @@
 
 import UIKit
 
-class WeatherViewController: UIViewController {
+class WeatherViewController: UIViewController, WeatherRepositoryCallback {
+  func onGetWeatherForCitySuccess() {
+    
+  }
+  
+  func onGetWeatherForCityError() {
+    
+  }
+  
   
   var city: DomainCity!
   
@@ -17,6 +25,7 @@ class WeatherViewController: UIViewController {
     
     navigationItem.title = city.name
     // Do any additional setup after loading the view.
+    NetworkManager.shared.getWeatherForCity(name: city.name!, callback: self)
   }
   
   
