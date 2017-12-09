@@ -29,6 +29,14 @@ class NetworkManager: WeatherRepository {
       
       if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
         print("Data: \(utf8Text)")
+        do {
+          let jsonDecoder = JSONDecoder()
+          let weatherData = try jsonDecoder.decode(CloudWeatherData.self, from: data)
+          print(weatherData.main?.temp)
+          print(weatherData.weather![0].main)
+        } catch let decodeError {
+          print("Error during JSON decoding: \(decodeError.localizedDescription)")
+        }
       }
     }
   }
