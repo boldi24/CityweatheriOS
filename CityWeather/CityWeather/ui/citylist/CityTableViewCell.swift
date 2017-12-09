@@ -14,6 +14,7 @@ class CityTableViewCell: UITableViewCell {
   
   @IBOutlet weak var cityLabel: UILabel!
   @IBOutlet weak var favButton: FavouriteButton!
+  var index: Int!
   
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -22,12 +23,10 @@ class CityTableViewCell: UITableViewCell {
   
   override func setSelected(_ selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
-    
-    // Configure the view for the selected state
   }
   @IBAction func onFavoriteButtonTouchUpInside(_ sender: Any) {
     print("selected")
-    selectionDelegate.onFavoriteButtonTouchUpInside(of: self)
+    selectionDelegate.onFavoriteButtonTouchUpInside(of: index)
   }
   
 }

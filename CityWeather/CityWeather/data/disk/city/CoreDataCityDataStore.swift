@@ -13,6 +13,8 @@ class CoreDataCityDataStore: NSObject, DiskCityDataStore {
   private var fetchedResultsController: NSFetchedResultsController<City>!
   private let managedObjectContext = CoreDataStack.shared.persistentContainer.viewContext
   
+  
+  //TODO: irjuk at hogy ne legyen ez a controller hanem a fetchrequest legyen mindig mert az ujonnani elemeket nem tartoalmazza a controller hacsak nem kerunk callbacket
   private override init() {
     super.init()
     let fetchRequest: NSFetchRequest<City> = City.fetchRequest()
@@ -23,7 +25,7 @@ class CoreDataCityDataStore: NSObject, DiskCityDataStore {
                                                           managedObjectContext: managedObjectContext,
                                                           sectionNameKeyPath: nil,
                                                           cacheName: nil)
-    //fetchedResultsController.delegate = self
+    fetchedResultsController.delegate = self
     do {
       try fetchedResultsController.performFetch()
     } catch let error as NSError {
@@ -40,11 +42,12 @@ class CoreDataCityDataStore: NSObject, DiskCityDataStore {
     let newCity = City(context: managedObjectContext)
     newCity.name = city.name
     newCity.isFavourite = city.favorite!
+    print(fetchedResultsController.fetchedObjects!.count)
   }
   
   func updateCity(city: DomainCity, at indexPath: IndexPath) {
+    print(fetchedResultsController.fetchedObjects!.count)
     let cityToUpdate = fetchedResultsController.object(at: indexPath)
-    cityToUpdate.name = city.name
     cityToUpdate.isFavourite = city.favorite!
   }
   
@@ -56,28 +59,25 @@ class CoreDataCityDataStore: NSObject, DiskCityDataStore {
   
 }
 
-//extension CoreDataCityDataStore: NSFetchedResultsControllerDelegate {
-//  func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-//    tableView.beginUpdates()
-//  }
-//
-//  func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-//    switch type {
-//    case .insert:
-//      tableView.insertRows(at: [newIndexPath!], with: .automatic)
-//    case .delete:
-//      tableView.deleteRows(at: [indexPath!], with: .automatic)
-//    case .update:
-//      let cell = tableView.cellForRow(at: indexPath!)!
-//      configure(cell: cell, at: indexPath!)
-//    case .move:
-//      tableView.deleteRows(at: [indexPath!], with: .automatic)
-//      tableView.insertRows(at: [newIndexPath!], with: .automatic)
-//    }
-//  }
-//
-//  func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-//    tableView.endUpdates()
-//  }
-//}
+extension CoreDataCityDataStore: NSFetchedResultsControllerDelegate {
+  func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+  }
+
+  func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+    switch type {
+    case .insert:
+      print("Insert happened")
+      print(fetchedResultsController.fetchedObjects!.count)
+    case .update:
+      print("Update happened")
+      print(indexPath?.row)
+    default:
+      break
+    }
+
+  }
+
+  func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+  }
+}
 

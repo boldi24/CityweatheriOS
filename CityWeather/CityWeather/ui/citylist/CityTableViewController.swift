@@ -35,6 +35,7 @@ class CityTableViewController: UITableViewController {
       fatalError("The dequeued cell is not an instance of CityTableViewCell.")
     }
     cell.selectionDelegate = self
+    cell.index = indexPath.row
     cell.cityLabel.text = cities[indexPath.row].name
     cell.favButton.isSelected = cities[indexPath.row].favorite!
     
@@ -58,16 +59,13 @@ class CityTableViewController: UITableViewController {
       tableView.deleteRows(at: [indexPath], with: .fade)
     }
   }
- 
-   // MARK: - Navigation
-   
-   // In a storyboard-based application, you will often want to do a little preparation before navigation
-   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-   // Get the new view controller using segue.destinationViewController.
-   // Pass the selected object to the new view controller.
+  
+  // MARK: - Navigation
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     let targetVC = segue.destination as! WeatherViewController
     targetVC.city = cities[(tableView.indexPathForSelectedRow?.row)!]
-   }
+  }
   
   private func addCity(name: String) {
     let city = DomainCity(name: name, favorite: false)
@@ -75,6 +73,17 @@ class CityTableViewController: UITableViewController {
     let path = IndexPath(row: cities.count-1, section: 0)
     tableView.insertRows(at: [path], with: UITableViewRowAnimation.automatic)
     interactor.saveCity(city: city)
+  }
+  
+  private func removeStarFromPrevFavorite() {
+    for(index, city) in cities.enumerated(){
+      if(city.favorite!) {
+        city.favorite = false
+        let path = IndexPath(row: index, section: 0)
+        tableView.reloadRows(at: [path], with: UITableViewRowAnimation.automatic)
+        interactor.updateCity(city: city, at: path)
+      }
+    }
   }
   
   //MARK: - IBAction
@@ -100,19 +109,28 @@ class CityTableViewController: UITableViewController {
     
     present(createCityAlert, animated: true, completion: nil)
   }
-  
 }
 
 extension CityTableViewController: SelectionCallback {
-  func onFavoriteButtonTouchUpInside(of cell: UITableViewCell) {
-    print("bement")
-    let indexPath = tableView.indexPath(for: cell)
-    if let indexPathUnwrapped = indexPath {
-      print("Updating city at \(indexPathUnwrapped.row)")
-      let city = cities[indexPathUnwrapped.row]
-      city.favorite = !city.favorite!
-      interactor.updateCity(city: city, at: indexPathUnwrapped)
+  func onFavoriteButtonTouchUpInside(of cellAtIndex: Int) {
+    let city = cities[cellAtIndex]
+    if !city.favorite! {
+      removeStarFromPrevFavorite()
     }
-
+    city.favorite = true
+    interactor.updateCity(city: city, at: IndexPath(row: cellAtIndex, section: 0))
   }
+  
+//  func onFavoriteButtonTouchUpInside(of cell: UITableViewCell) {
+//    let indexPath = tableView.indexPath(for: cell)
+//    if let indexPathUnwrapped = indexPath {
+//      let city = cities[indexPathUnwrapped.row]
+//      if !city.favorite! {
+//        removeStarFromPrevFavorite()
+//      }
+//      city.favorite = !city.favorite!
+//      interactor.updateCity(city: city, at: indexPathUnwrapped)
+//    }
+//  }
+  
 }

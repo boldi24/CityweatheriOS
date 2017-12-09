@@ -9,5 +9,5 @@
 import UIKit
 
 protocol SelectionCallback {
-  func onFavoriteButtonTouchUpInside(of cell: UITableViewCell)
+  func onFavoriteButtonTouchUpInside(of cellAtIndex: Int)
 }
