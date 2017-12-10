@@ -13,6 +13,6 @@ protocol WeatherRepository {
 }
 
 protocol WeatherRepositoryCallback {
-  func onGetWeatherForCitySuccess()
+  func onGetWeatherForCitySuccess(cloudWeatherData: CloudWeatherData)
   func onGetWeatherForCityError()
 }

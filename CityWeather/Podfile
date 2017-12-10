@@ -4,4 +4,6 @@ use_frameworks!
 
 target 'CityWeather' do
     pod 'Alamofire', '~> 4.5'
+    pod 'SVProgressHUD'
+    pod 'SDWebImage', '~> 4.0'
 end

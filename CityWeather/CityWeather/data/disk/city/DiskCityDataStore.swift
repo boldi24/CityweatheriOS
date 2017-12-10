@@ -12,5 +12,6 @@ protocol DiskCityDataStore {
   func saveCity(city: DomainCity)
   func deleteCity(at indexPath: IndexPath)
   func updateCity(city: DomainCity, at indexPath: IndexPath)
-  func getCities() -> [City]? 
+  func getCities() -> [City]?
+  func getCityByName(name: String) -> City?
 }

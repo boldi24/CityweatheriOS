@@ -2,6 +2,18 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/boldizsar/Documents/Development/iOS/CityweatheriOS/CityWeather/CityWeather/data/entity/diskWeatherData/DiskWeatherData+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:CityWeather/data/entity/diskWeatherData/DiskWeatherData+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:CityWeather/data/entity/diskCity/City+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:CityWeather/data/entity/diskCity/City+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
       location = "group:CityWeather.xcodeproj">
    </FileRef>
    <FileRef

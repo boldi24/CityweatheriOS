@@ -57,6 +57,11 @@ class CoreDataCityDataStore: NSObject, DiskCityDataStore {
     return fetchedResultsController.fetchedObjects
   }
   
+  func getCityByName(name: String) -> City? {
+    let cities = fetchedResultsController.fetchedObjects
+    return cities?.filter{ $0.name == name }.first
+  }
+  
 }
 
 extension CoreDataCityDataStore: NSFetchedResultsControllerDelegate {
