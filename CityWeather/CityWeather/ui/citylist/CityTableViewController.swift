@@ -16,7 +16,6 @@ class CityTableViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     cities = interactor.getCities()!
-    print("sdsf")
   }
   
   // MARK: - Table view data source
