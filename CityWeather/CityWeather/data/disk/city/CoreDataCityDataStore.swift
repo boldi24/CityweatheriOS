@@ -49,6 +49,9 @@ class CoreDataCityDataStore: NSObject, DiskCityDataStore {
     print(fetchedResultsController.fetchedObjects!.count)
     let cityToUpdate = fetchedResultsController.object(at: indexPath)
     cityToUpdate.isFavourite = city.favorite!
+    if city.favorite! {
+      UserDefaults(suiteName: "group.cityweather")!.setValue(city.name!, forKey: "favCity")
+    }
   }
   
   func getCities() -> [City]? {

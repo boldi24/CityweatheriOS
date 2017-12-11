@@ -2,8 +2,16 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '10.0'
 use_frameworks!
 
-target 'CityWeather' do
+def shared_pods
     pod 'Alamofire', '~> 4.5'
-    pod 'SVProgressHUD'
     pod 'SDWebImage', '~> 4.0'
+end
+
+target 'CityWeather' do
+    shared_pods
+    pod 'SVProgressHUD'
+end
+
+target 'CityWeatherHomeExt' do
+    shared_pods
 end

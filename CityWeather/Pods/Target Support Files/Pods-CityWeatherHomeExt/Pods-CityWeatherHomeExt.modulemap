@@ -1,0 +1,6 @@
+framework module Pods_CityWeatherHomeExt {
+  umbrella header "Pods-CityWeatherHomeExt-umbrella.h"
+
+  export *
+  module * { export * }
+}
