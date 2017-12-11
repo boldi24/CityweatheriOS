@@ -28,13 +28,22 @@ class NetworkManager: WeatherRepository {
         do {
           let jsonDecoder = JSONDecoder()
           let weatherData = try jsonDecoder.decode(CloudWeatherData.self, from: data)
-          callback.onGetWeatherForCitySuccess(cloudWeatherData: weatherData)
+          callback.onGetWeatherForCitySuccess(weatherData: self.convertCloudWeatherToDomain(cloudWeather: weatherData))
         } catch let decodeError {
           print("Error during JSON decoding: \(decodeError.localizedDescription)")
           callback.onGetWeatherForCityError()
         }
       }
     }
+  }
+  
+  func convertCloudWeatherToDomain(cloudWeather: CloudWeatherData) -> DomainWeatherData {
+    let domainWeather = DomainWeatherData(mainDesc: cloudWeather.weather?[0].main,
+                                          icon: cloudWeather.weather?[0].icon,
+                                          currTemp: cloudWeather.main?.temp,
+                                          maxTemp: cloudWeather.main?.temp_max,
+                                          minTemp: cloudWeather.main?.temp_min)
+    return domainWeather
   }
   
   

@@ -13,6 +13,6 @@ protocol WeatherDataInteractor {
 }
 
 protocol GetWeatherDataForCityCallback {
-  func getWeatherDataForCitySuccess (weatherData: CloudWeatherData)
+  func getWeatherDataForCitySuccess (weatherData: DomainWeatherData)
   func getWeatherDataForCityError ()
 }

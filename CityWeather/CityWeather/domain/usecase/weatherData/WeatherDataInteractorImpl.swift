@@ -11,20 +11,30 @@ import Foundation
 class WeatherDataInteractorImpl: WeatherDataInteractor {
   
   private let weatherRepository: WeatherRepository = NetworkManager.shared
+  private let cityDataStore: DiskCityDataStore = CoreDataCityDataStore.shared
   
   var callback: GetWeatherDataForCityCallback!
+  var cityName: String!
   
   func getWeatherDataForCity(cityName: String, callback: GetWeatherDataForCityCallback) {
     self.callback = callback
-    weatherRepository.getWeatherForCity(name: cityName, callback: self)
+    self.cityName = cityName
+    if cityDataStore.isWeatherCachedForCity(name: cityName) {
+      print("Weather chached for \(cityName)...")
+      callback.getWeatherDataForCitySuccess(weatherData: cityDataStore.getWeatherOfCity(name: cityName)!)
+    } else {
+      print("Weather not cached for \(cityName)...")
+      weatherRepository.getWeatherForCity(name: cityName, callback: self)
+    }
   }
   
 }
 
 extension WeatherDataInteractorImpl: WeatherRepositoryCallback {
-  
-  func onGetWeatherForCitySuccess(cloudWeatherData: CloudWeatherData) {
-    callback.getWeatherDataForCitySuccess(weatherData: cloudWeatherData)
+
+  func onGetWeatherForCitySuccess(weatherData: DomainWeatherData) {
+    callback.getWeatherDataForCitySuccess(weatherData: weatherData)
+    cityDataStore.saveWeatherOfCity(name: cityName, weather: weatherData)
   }
   
   func onGetWeatherForCityError() {

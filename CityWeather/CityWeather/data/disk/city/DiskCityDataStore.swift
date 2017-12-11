@@ -14,4 +14,7 @@ protocol DiskCityDataStore {
   func updateCity(city: DomainCity, at indexPath: IndexPath)
   func getCities() -> [City]?
   func getCityByName(name: String) -> City?
+  func getWeatherOfCity(name: String) -> DomainWeatherData?
+  func saveWeatherOfCity(name: String, weather: DomainWeatherData)
+  func isWeatherCachedForCity(name: String) -> Bool
 }

@@ -33,18 +33,18 @@ class WeatherViewController: UIViewController {
 
 extension WeatherViewController: GetWeatherDataForCityCallback {
   
-  func getWeatherDataForCitySuccess(weatherData: CloudWeatherData) {
-    mainDesciptionLabel.text = weatherData.weather?[0].main ?? "Unknown"
-    if let temp = weatherData.main?.temp {
+  func getWeatherDataForCitySuccess(weatherData: DomainWeatherData) {
+    mainDesciptionLabel.text = weatherData.mainDesc ?? "Unknown"
+    if let temp = weatherData.currTemp {
       currTempLabel.text = String(format:"%.0f", temp) + " °C"
     }
-    if let minTemp = weatherData.main?.temp_min {
+    if let minTemp = weatherData.minTemp {
       minTempLabel.text = String(format:"%.0f", minTemp) + " °C"
     }
-    if let maxTemp = weatherData.main?.temp_max {
+    if let maxTemp = weatherData.maxTemp {
       maxTempLabel.text = String(format:"%.0f", maxTemp) + " °C"
     }
-    iconImageView.sd_setImage(with: URL(string: "http://openweathermap.org/img/w/" + (weatherData.weather?[0].icon ?? "") + ".png"), placeholderImage: UIImage(named: "error"))
+    iconImageView.sd_setImage(with: URL(string: "http://openweathermap.org/img/w/" + (weatherData.icon ?? "") + ".png"), placeholderImage: UIImage(named: "error"))
     
     SVProgressHUD.dismiss()
   }

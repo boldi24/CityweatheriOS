@@ -37,12 +37,12 @@ class TodayViewController: UIViewController, NCWidgetProviding {
 
 extension TodayViewController: GetWeatherDataForCityCallback {
   
-  func getWeatherDataForCitySuccess(weatherData: CloudWeatherData) {
+  func getWeatherDataForCitySuccess(weatherData: DomainWeatherData) {
     cityLabel.text = cityName
-    if let temp = weatherData.main?.temp {
+    if let temp = weatherData.currTemp {
       tempLabel.text = String(format:"%.0f", temp) + " °C"
     }
-    iconImageView.sd_setImage(with: URL(string: "http://openweathermap.org/img/w/" + (weatherData.weather?[0].icon ?? "") + ".png"), placeholderImage: UIImage(named: "error"))
+    iconImageView.sd_setImage(with: URL(string: "http://openweathermap.org/img/w/" + (weatherData.icon ?? "") + ".png"), placeholderImage: UIImage(named: "error"))
   }
   
   func getWeatherDataForCityError() {
